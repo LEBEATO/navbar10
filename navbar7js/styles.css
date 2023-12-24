@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "cpcnav";
+    src: url("https://assets.codepen.io/11614/cpcnav.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    height: 100vh;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav {
+    --main-bg: #f7f6d6;
+    --main-txt: #656320;
+    --active-bg: #d0f8ed;
+    --active-txt: #107157;
+
+    :checked~& {
+        --main-bg: #d1c2e1;
+        --main-txt: #639;
+        --active-bg: #639;
+        --active-txt: #d1c2e1;
+    }
+}
+
+.nav-bar {
+    background-color: #fff;
+    border-bottom: solid 1px #ddd;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow-y: hidden;
+    padding-right: 30px;
+
+    .nav {
+        background: var(--main-bg);
+        border-left: solid 1px #ddd;
+        border-radius: 12px 0 0;
+        border-top: solid 1px #ddd;
+        box-shadow: 1px 0px 1px rgba(0, 0, 0, 0.1);
+        color: var(--main-txt);
+        flex: 1;
+        font: normal 18px/37px Roboto, sans-serif;
+        bottom: -4px;
+        margin-right: 16px;
+        padding-left: 40px;
+        padding-right: 8px;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+
+        &:after {
+            color: var(--main-bg);
+            content: "\e804";
+            font-family: cpcnav;
+            font-size: 36px;
+            position: absolute;
+            right: -42px;
+            margin-top: -.5px;
+            text-shadow: 1px -1px 0px rgba(0, 0, 0, 0.1);
+            top: 0px;
+        }
+
+        &:before {
+            color: inherit;
+            font-family: cpcnav;
+            font-size: 16px;
+            left: 14px;
+            position: absolute;
+        }
+
+        &.home {
+            z-index: 4;
+
+            &:before {
+                content: "\e802";
+            }
+        }
+
+        &.search {
+            z-index: 3;
+
+            &:before {
+                content: "\e800";
+            }
+        }
+
+        &.following {
+            z-index: 2;
+
+            &:before {
+                content: "\e803";
+            }
+        }
+
+        &.settings {
+            z-index: 1;
+
+            &:before {
+                content: "\e801";
+            }
+        }
+
+        &.active {
+            background: var(--active-bg);
+            color: var(--active-txt);
+            z-index: 5;
+
+            &:after {
+                color: var(--active-bg);
+            }
+        }
+    }
+}
+
+checkbox {
+    vertical-align: middle;
+}
+
+label {
+    line-height: 36px;
+    margin-left: 4px;
+    margin-right: 24px;
+}
